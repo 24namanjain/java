@@ -6,7 +6,7 @@ public class AdditionTest {
 
     static void main() {
         testAddition();
-        JavaLogger.INSTANCE.log("All tests passed!");
+        JavaLogger.INSTANCE.info("All tests passed!");
     }
 
     private static void testAddition() {

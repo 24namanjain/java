@@ -8,7 +8,7 @@ public class AdditionDemo implements FeatureDemo {
 
     @Override
     public void run() throws FeatureException, InterruptedException {
-        JavaLogger.INSTANCE.log(add(5, 5) + "");
+        JavaLogger.INSTANCE.info(add(5, 5) + "");
     }
 
     public int add(int a, int b) {
