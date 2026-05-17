@@ -7,7 +7,7 @@ import learning.core.exception.FeatureException;
 public class AdditionDemo implements FeatureDemo {
 
     @Override
-    public void run() throws FeatureException, InterruptedException {
+    public void run() throws FeatureException {
         JavaLogger.INSTANCE.info(add(5, 5) + "");
     }
 
