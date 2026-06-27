@@ -3,18 +3,26 @@ package learning.patterns.behavioral.strategy.v1;
 import java.util.ArrayList;
 import java.util.List;
 
+import learning.core.DemoRunner;
+import learning.core.FeatureDemo;
 import learning.core.JavaLogger;
 import learning.patterns.behavioral.strategy.v1.entity.Course;
+import learning.patterns.behavioral.strategy.v1.enums.SortDirection;
 import learning.patterns.behavioral.strategy.v1.service.SortStrategy;
 import learning.patterns.behavioral.strategy.v1.service.impl.CourseSorter;
 import learning.patterns.behavioral.strategy.v1.service.impl.NameSortStrategy;
 import learning.patterns.behavioral.strategy.v1.service.impl.RatingSortStrategy;
 import learning.patterns.behavioral.strategy.v1.service.impl.StudentCountAndRatingSortStrategy;
 import learning.patterns.behavioral.strategy.v1.service.impl.StudentCountSortStrategy;
-import learning.patterns.behavioral.strategy.v1.enums.SortDirection;
 
-public class StrategyMain {
+public class StrategyDemo implements FeatureDemo {
+
     static void main() {
+        DemoRunner.run(new StrategyDemo());
+    }
+
+    @Override
+    public void run() {
         JavaLogger.INSTANCE.info("Strategy Pattern Module");
 
         List<Course> courses = new ArrayList<>();
@@ -24,69 +32,59 @@ public class StrategyMain {
         courses.add(new Course("Refactoring", 4.9, 400));
         courses.add(new Course("Clean Code", 4.7, 200));
         courses.add(new Course("Effective Java", 4.9, 200));
-        courses.add(new Course("Kubernetes", 4.8, 200));    
-        courses.add(new Course("Docker", 4.7, 200));    
-        courses.add(new Course("Microservices", 4.9, 200));    
-        courses.add(new Course("API Design", 4.8, 200));    
-        courses.add(new Course("API Design", 4.8, 200));    
+        courses.add(new Course("Kubernetes", 4.8, 200));
+        courses.add(new Course("Docker", 4.7, 200));
+        courses.add(new Course("Microservices", 4.9, 200));
+        courses.add(new Course("API Design", 4.8, 200));
+        courses.add(new Course("API Design", 4.8, 200));
 
         JavaLogger.INSTANCE.newLine();
         printCourses(courses, "Unsorted courses:");
 
-        // Demonstrate various sorting strategies
-        demonstrateSort(courses, new NameSortStrategy(SortDirection.ASCENDING), 
+        demonstrateSort(courses, new NameSortStrategy(SortDirection.ASCENDING),
                 "Sorted courses by name in ascending order:");
-        
-        demonstrateSort(courses, new NameSortStrategy(SortDirection.DESCENDING), 
+
+        demonstrateSort(courses, new NameSortStrategy(SortDirection.DESCENDING),
                 "Sorted courses by name in descending order:");
 
-        demonstrateSort(courses, new RatingSortStrategy(SortDirection.ASCENDING), 
+        demonstrateSort(courses, new RatingSortStrategy(SortDirection.ASCENDING),
                 "Sorted courses by rating in ascending order:");
 
-        demonstrateSort(courses, new RatingSortStrategy(SortDirection.DESCENDING), 
+        demonstrateSort(courses, new RatingSortStrategy(SortDirection.DESCENDING),
                 "Sorted courses by rating in descending order:");
 
-        demonstrateSort(courses, new StudentCountSortStrategy(SortDirection.ASCENDING), 
+        demonstrateSort(courses, new StudentCountSortStrategy(SortDirection.ASCENDING),
                 "Sorted courses by number of students in ascending order:");
 
-        demonstrateSort(courses, new StudentCountSortStrategy(SortDirection.DESCENDING), 
+        demonstrateSort(courses, new StudentCountSortStrategy(SortDirection.DESCENDING),
                 "Sorted courses by number of students in descending order:");
 
-        demonstrateSort(courses, new StudentCountAndRatingSortStrategy(SortDirection.ASCENDING), 
+        demonstrateSort(courses, new StudentCountAndRatingSortStrategy(SortDirection.ASCENDING),
                 "Sorted courses by number of students and rating in ascending order:");
 
-        demonstrateSort(courses, new StudentCountAndRatingSortStrategy(SortDirection.DESCENDING), 
+        demonstrateSort(courses, new StudentCountAndRatingSortStrategy(SortDirection.DESCENDING),
                 "Sorted courses by number of students and rating in descending order:");
     }
 
-    /**
-     * Demonstrates a sorting strategy by creating a copy of the courses list,
-     * applying the strategy, and printing the results.
-     * 
-     * @param originalCourses the original list of courses (will not be modified)
-     * @param strategy the sorting strategy to apply
-     * @param description the description to print with the sorted results
-     */
-    private static void demonstrateSort(List<Course> originalCourses, SortStrategy strategy, String description) {
-        // Create a copy to avoid mutating the original list
+    private void demonstrateSort(List<Course> originalCourses, SortStrategy strategy, String description) {
         List<Course> coursesCopy = new ArrayList<>(originalCourses);
-        
+
         JavaLogger.INSTANCE.info("Using " + strategy.getClass().getSimpleName());
         JavaLogger.INSTANCE.info("--------------------------------");
-        
+
         CourseSorter courseSorter = new CourseSorter(strategy);
         courseSorter.sort(coursesCopy);
-        
+
         JavaLogger.INSTANCE.newLine();
         printCourses(coursesCopy, description);
         JavaLogger.INSTANCE.newLine();
     }
 
-    public static void printCourses(List<Course> courses, String message) {
+    private void printCourses(List<Course> courses, String message) {
         JavaLogger.INSTANCE.info(message);
         courses.forEach(course -> {
-                JavaLogger.INSTANCE.info(course.toString());
-                JavaLogger.INSTANCE.newLine();
+            JavaLogger.INSTANCE.info(course.toString());
+            JavaLogger.INSTANCE.newLine();
         });
     }
 }
