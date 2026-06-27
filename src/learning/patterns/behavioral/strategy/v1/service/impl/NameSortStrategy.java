@@ -13,7 +13,7 @@ import learning.patterns.behavioral.strategy.v1.enums.SortDirection;
  */
 public class NameSortStrategy implements SortStrategy {
 
-    private SortDirection sortDirection;
+    private final SortDirection sortDirection;
 
     public NameSortStrategy(SortDirection sortDirection) {
         if (sortDirection == null) {

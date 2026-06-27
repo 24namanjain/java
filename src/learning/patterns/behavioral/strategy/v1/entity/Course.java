@@ -2,9 +2,9 @@ package learning.patterns.behavioral.strategy.v1.entity;
 
 public class Course {
 
-    private String name;
-    private double rating;
-    private int numberOfStudents;
+    private final String name;
+    private final double rating;
+    private final int numberOfStudents;
 
     public Course(String name, double rating, int numberOfStudents) {
         this.name = name;
@@ -16,24 +16,12 @@ public class Course {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     public int getNumberOfStudents() {
         return numberOfStudents;
-    }
-
-    public void setNumberOfStudents(int numberOfStudents) {
-        this.numberOfStudents = numberOfStudents;
     }
 
     @Override

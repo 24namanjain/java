@@ -3,6 +3,7 @@ package learning.patterns.behavioral.strategy.v1;
 import java.util.ArrayList;
 import java.util.List;
 
+import learning.core.JavaLogger;
 import learning.patterns.behavioral.strategy.v1.entity.Course;
 import learning.patterns.behavioral.strategy.v1.service.SortStrategy;
 import learning.patterns.behavioral.strategy.v1.service.impl.CourseSorter;
@@ -13,8 +14,8 @@ import learning.patterns.behavioral.strategy.v1.service.impl.StudentCountSortStr
 import learning.patterns.behavioral.strategy.v1.enums.SortDirection;
 
 public class StrategyMain {
-    public static void main(String[] args) {
-        System.out.println("Strategy Pattern Module");
+    static void main() {
+        JavaLogger.INSTANCE.info("Strategy Pattern Module");
 
         List<Course> courses = new ArrayList<>();
 
@@ -29,7 +30,7 @@ public class StrategyMain {
         courses.add(new Course("API Design", 4.8, 200));    
         courses.add(new Course("API Design", 4.8, 200));    
 
-        System.out.println();
+        JavaLogger.INSTANCE.newLine();
         printCourses(courses, "Unsorted courses:");
 
         // Demonstrate various sorting strategies
@@ -70,19 +71,22 @@ public class StrategyMain {
         // Create a copy to avoid mutating the original list
         List<Course> coursesCopy = new ArrayList<>(originalCourses);
         
-        System.out.println("Using " + strategy.getClass().getSimpleName());
-        System.out.println("--------------------------------");
+        JavaLogger.INSTANCE.info("Using " + strategy.getClass().getSimpleName());
+        JavaLogger.INSTANCE.info("--------------------------------");
         
         CourseSorter courseSorter = new CourseSorter(strategy);
         courseSorter.sort(coursesCopy);
         
-        System.out.println();
+        JavaLogger.INSTANCE.newLine();
         printCourses(coursesCopy, description);
-        System.out.println();
+        JavaLogger.INSTANCE.newLine();
     }
 
     public static void printCourses(List<Course> courses, String message) {
-        System.out.println(message);
-        courses.forEach(System.out::println);
+        JavaLogger.INSTANCE.info(message);
+        courses.forEach(course -> {
+                JavaLogger.INSTANCE.info(course.toString());
+                JavaLogger.INSTANCE.newLine();
+        });
     }
 }

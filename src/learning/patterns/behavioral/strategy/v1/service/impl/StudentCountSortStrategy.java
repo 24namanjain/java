@@ -13,7 +13,7 @@ import learning.patterns.behavioral.strategy.v1.enums.SortDirection;
  */
 public class StudentCountSortStrategy implements SortStrategy {
     
-    private SortDirection sortDirection;
+    private final SortDirection sortDirection;
     
     public StudentCountSortStrategy(SortDirection sortDirection) {
         if (sortDirection == null) {

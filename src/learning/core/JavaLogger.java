@@ -78,4 +78,8 @@ public enum JavaLogger {
         String logMsg = String.format("%n--- %s ---", sectionName);
         this.logger.info(logMsg);
     }
+
+    public void newLine() {
+        this.logger.info("\n");
+    }
 }

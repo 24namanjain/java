@@ -14,7 +14,7 @@ import learning.patterns.behavioral.strategy.v1.service.SortStrategy;
  */
 public class StudentCountAndRatingSortStrategy implements SortStrategy {
     
-    private SortDirection sortDirection;
+    private final SortDirection sortDirection;
 
     public StudentCountAndRatingSortStrategy(SortDirection sortDirection) {
         if (sortDirection == null) {

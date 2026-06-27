@@ -12,7 +12,7 @@ import learning.patterns.behavioral.strategy.v1.service.SortStrategy;
  */
 public class CourseSorter {
     
-    private SortStrategy sortStrategy;
+    private final SortStrategy sortStrategy;
 
     public CourseSorter(SortStrategy sortStrategy) {
         if (sortStrategy == null) {
