@@ -1,8 +1,6 @@
 package learning.features.executor_service;
 
 import learning.core.JavaLogger;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Unmodifiable;
 
 import java.util.Map;
 import java.util.concurrent.*;
@@ -49,7 +47,7 @@ public class ProductionPoolExample {
         }
     }
 
-    static @NotNull @Unmodifiable Map<RejectedExecutionHandler, String> getRejectedExecutionHandler() {
+    static Map<RejectedExecutionHandler, String> getRejectedExecutionHandler() {
         ThreadPoolExecutor.AbortPolicy abortPolicy = new ThreadPoolExecutor.AbortPolicy();
         ThreadPoolExecutor.CallerRunsPolicy callerRunsPolicy = new ThreadPoolExecutor.CallerRunsPolicy();
         ThreadPoolExecutor.DiscardPolicy discardPolicy = new ThreadPoolExecutor.DiscardPolicy();

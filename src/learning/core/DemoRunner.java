@@ -1,7 +1,6 @@
 package learning.core;
 
 import learning.core.exception.FeatureException;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Utility class to execute FeatureDemo implementations safely.
@@ -10,7 +9,7 @@ public class DemoRunner {
 
     private DemoRunner() {}
 
-    public static void run(@NotNull FeatureDemo demo) {
+    public static void run(FeatureDemo demo) {
         JavaLogger.INSTANCE.section("[Starting Demo: " + demo.getName() + "]");
         try {
             demo.run();

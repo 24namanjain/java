@@ -1,7 +1,5 @@
 package learning.core;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.ConsoleHandler;
@@ -35,7 +33,7 @@ public enum JavaLogger {
         logger.addHandler(handler);
     }
 
-    private @NotNull String getPrefix() {
+    private String getPrefix() {
         // Find the caller by looking at the stack trace.
         // Index 0: Thread.getStackTrace()
         // Index 1: JavaLogger.getPrefix()
@@ -71,7 +69,7 @@ public enum JavaLogger {
         this.logger.log(Level.SEVERE, logMsg);
     }
 
-    public void error(String message, @NotNull Throwable t) {
+    public void error(String message, Throwable t) {
         String logMsg = getPrefix() + message;
         this.logger.log(Level.SEVERE, logMsg, t);
     }
