@@ -1,11 +1,19 @@
 package learning.features.executor_service;
 
+import learning.core.DemoRunner;
+import learning.core.FeatureDemo;
 import learning.core.JavaLogger;
 
 import java.util.concurrent.*;
 
-public class CallableFutureExample {
+public class CallableFutureDemo implements FeatureDemo {
+
     static void main() {
+        DemoRunner.run(new CallableFutureDemo());
+    }
+
+    @Override
+    public void run() {
         try (ExecutorService executor = Executors.newCachedThreadPool()) {
 
             // Callable returns a value and can throw checked exception

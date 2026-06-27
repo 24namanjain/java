@@ -1,13 +1,20 @@
 package learning.features.executor_service;
 
+import learning.core.DemoRunner;
+import learning.core.FeatureDemo;
 import learning.core.JavaLogger;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class FireAndForget {
-    static void main() {
+public class FireAndForgetDemo implements FeatureDemo {
 
+    static void main() {
+        DemoRunner.run(new FireAndForgetDemo());
+    }
+
+    @Override
+    public void run() {
         // Create a fixed pool of 2 threads
         // shutdown() allows running tasks to complete and
         // shutdownNow() kills immediately

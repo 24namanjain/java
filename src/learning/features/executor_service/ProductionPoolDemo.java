@@ -1,12 +1,20 @@
 package learning.features.executor_service;
 
+import learning.core.DemoRunner;
+import learning.core.FeatureDemo;
 import learning.core.JavaLogger;
 
 import java.util.Map;
 import java.util.concurrent.*;
 
-public class ProductionPoolExample {
-    static void main() throws InterruptedException {
+public class ProductionPoolDemo implements FeatureDemo {
+
+    static void main() {
+        DemoRunner.run(new ProductionPoolDemo());
+    }
+
+    @Override
+    public void run() throws InterruptedException {
         for (Map.Entry<RejectedExecutionHandler, String> entry : getRejectedExecutionHandler().entrySet()) {
             RejectedExecutionHandler policyClass = entry.getKey();
             String explanation = entry.getValue();
@@ -30,7 +38,7 @@ public class ProductionPoolExample {
                     try {
                         pool.submit(() -> {
                             JavaLogger.INSTANCE.info("[" + Thread.currentThread()
-                                                                 .getName() + "] Processing task " + taskId);
+                                                                     .getName() + "] Processing task " + taskId);
                             try {
                                 Thread.sleep(100);
                             } catch (InterruptedException e) {
