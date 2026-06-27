@@ -28,6 +28,9 @@ public class CallableFutureDemo implements FeatureDemo {
 
             JavaLogger.INSTANCE.info("Submitting the task...");
 
+            // Why we need Future & FutureTask?
+            // Future is an interface that represents a result of an asynchronous computation.
+            // FutureTask is a concrete implementation of Future that can be used to represent a result of an asynchronous computation.
             FutureTask<Integer> futureTask = new FutureTask<>(callable);
             executor.submit(futureTask);
 
